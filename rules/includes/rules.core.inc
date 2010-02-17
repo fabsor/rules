@@ -637,6 +637,14 @@ abstract class RulesPlugin extends RulesExtendable implements EntityAPIInterface
   public function destroy() {
     unset($this->parent);
   }
+
+  /**
+   * Seamlessy invokes the method implemented via faces without having to think
+   * about references.
+   */
+  public function form(&$form, &$form_state, array $options = array()) {
+    $this->__call('form', array(&$form, &$form_state, $options));
+  }
 }
 
 
